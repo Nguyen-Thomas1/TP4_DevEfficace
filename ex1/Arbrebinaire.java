@@ -4,7 +4,9 @@ Base de données
   
 
   Situations fonctionnelles:
-  Arbres
+  Hiérarchie des fichiers
+  Hiérarchie de classes
+  
 
 
     
