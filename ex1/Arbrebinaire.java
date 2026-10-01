@@ -151,3 +151,62 @@ public static void main(String[] args) {
    
     System.out.println("Parcours préfixé : " + tree.toString());
 }
+
+
+8) 
+import java.util.ArrayList;
+import java.util.List;
+
+public class NaryTree<T> {
+    
+    public static class Node<T> {
+        T element;
+        List<Node<T>> children;
+        
+        public Node(T element) {
+            this.element = element;
+            this.children = new ArrayList<>();
+        }
+        
+        public void addChild(Node<T> child) {
+            children.add(child);
+        }
+    }
+    
+    protected Node<T> root = null;
+    
+    public NaryTree(Node<T> root) {
+        this.root = root;
+    }
+}
+
+
+9)
+  public static void main(String[] args) {
+    // Racine du document
+    NaryTree.Node<String> html = new NaryTree.Node<>("html");
+    
+    // Section Head
+    NaryTree.Node<String> head = new NaryTree.Node<>("head");
+    NaryTree.Node<String> title = new NaryTree.Node<>("title");
+    title.addChild(new NaryTree.Node<>("Page test"));
+    head.addChild(title);
+    
+    // Section Body
+    NaryTree.Node<String> body = new NaryTree.Node<>("body");
+    
+    NaryTree.Node<String> h1 = new NaryTree.Node<>("h1");
+    h1.addChild(new NaryTree.Node<>("Titre niveau 1"));
+    
+    NaryTree.Node<String> p = new NaryTree.Node<>("p");
+    p.addChild(new NaryTree.Node<>("Ceci est un paragraphe"));
+    
+    body.addChild(h1);
+    body.addChild(p);
+    
+    // Assemblage final
+    html.addChild(head);
+    html.addChild(body);
+    
+    NaryTree<String> domTree = new NaryTree<>(html);
+}
